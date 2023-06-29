@@ -19,7 +19,7 @@ app.post("/", async (req, res) => {
 
   let browser = await puppeteer.launch({
     headless: "new",
-    executablePath: "/usr/bin/google-chrome",
+    executablePath: "/usr/bin/chromium-browser",
     args: [
       "--disable-gpu",
       "--disable-setuid-sandbox",
