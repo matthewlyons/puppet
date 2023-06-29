@@ -10,11 +10,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
 app.post("/", async (req, res) => {
-  if (
-    req.headers.origin !== "https://kv-shopify-app.sandbox.kennedyviolins.com"
-  ) {
-    return res.send("Error");
-  }
+  // if (
+  //   req.headers.origin !== "https://kv-shopify-app.sandbox.kennedyviolins.com"
+  // ) {
+  //   return res.send("Error");
+  // }
   let { html } = req.body;
 
   let browser = await puppeteer.launch({

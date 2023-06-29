@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install gnupg wget -y && \
   apt-get install google-chrome-stable -y --no-install-recommends && \
   rm -rf /var/lib/apt/lists/*
 
-FROM node:10
+FROM node:18
 
 WORKDIR /usr/src/app
 
