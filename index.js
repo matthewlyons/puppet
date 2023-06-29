@@ -10,11 +10,23 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
 app.post("/", async (req, res) => {
-  console.log(req.headers);
-  console.log(req.headers.host);
+  if (
+    req.headers.origin !== "https://kv-shopify-app.sandbox.kennedyviolins.com"
+  ) {
+    return res.send("Error");
+  }
   let { html } = req.body;
 
-  let browser = await puppeteer.launch({ headless: "new" });
+  let browser = await puppeteer.launch({
+    headless: "new",
+    executablePath: "/usr/bin/chromium-browser",
+    args: [
+      "--disable-gpu",
+      "--disable-setuid-sandbox",
+      "--no-sandbox",
+      "--no-zygote",
+    ],
+  });
 
   const page = await browser.newPage();
   await page.setContent(html);
